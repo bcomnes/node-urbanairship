@@ -1,0 +1,27 @@
+{
+  "name": "urbanairship",
+  "description": "A module for making API v3 calls to Urban Airship",
+  "version": "1.0.0",
+  "author": "Bret Comnes <bcomnes@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/bcomnes/urbanairship/issues"
+  },
+  "devDependencies": {
+    "standard": "*",
+    "tap-spec": "^3.0.0",
+    "tape": "^4.0.0"
+  },
+  "homepage": "https://github.com/bcomnes/urbanairship",
+  "keywords": [
+    "UA"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bcomnes/urbanairship.git"
+  },
+  "scripts": {
+    "test": "standard && tape test/*.js | tap-spec"
+  }
+}
