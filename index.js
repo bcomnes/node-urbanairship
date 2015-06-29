@@ -4,7 +4,7 @@ var api = require('./lib/api')
 
 var headers = {
   'User-Agent': 'urbanairship/' + package_json.version + ';nodejs',
-  'Accept': 'application/vnd.urbanairship+json; version=3;',
+  'Accept': 'application/vnd.urbanairship+json; version=3;'
 }
 function UrbanAirship (appKey, masterSecret) {
   if (!(this instanceof UrbanAirship)) {
@@ -15,16 +15,28 @@ function UrbanAirship (appKey, masterSecret) {
   this.masterSecret = masterSecret
 }
 
-UrbanAirship.prototype.push = function (pushObj, cb) {
+UrbanAirship.prototype.push = function push (pushObj, cb) {
   var self = this
-  var url = api.getUri('push')
   var options = {
-    url: url,
+    url: api.getUri('push'),
     headers: headers,
     json: true,
     auth: {user: self.appKey, pass: self.masterSecret},
     body: pushObj
   }
+  request.post(options, cb)
+}
+
+UrbanAirship.prototype.validate = function validate (pushObj, cb) {
+  var self = this
+  var options = {
+    url: api.getUri('validate'),
+    headers: headers,
+    json: true,
+    auth: {user: self.appKey, pass: self.masterSecret},
+    body: pushObj
+  }
+
   request.post(options, cb)
 }
 
