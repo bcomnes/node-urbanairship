@@ -6,6 +6,7 @@ var headers = {
   'User-Agent': 'urbanairship/' + package_json.version + ';nodejs',
   'Accept': 'application/vnd.urbanairship+json; version=3;'
 }
+
 function UrbanAirship (appKey, masterSecret) {
   if (!(this instanceof UrbanAirship)) {
     return new UrbanAirship(appKey, masterSecret)
@@ -31,6 +32,19 @@ UrbanAirship.prototype.validate = function validate (pushObj, cb) {
   var self = this
   var options = {
     url: api.getUri('validate'),
+    headers: headers,
+    json: true,
+    auth: {user: self.appKey, pass: self.masterSecret},
+    body: pushObj
+  }
+
+  request.post(options, cb)
+}
+
+UrbanAirship.prototype.schedule = function schedule (pushObj, cb) {
+  var self = this
+  var options = {
+    url: api.getUri('schedules'),
     headers: headers,
     json: true,
     auth: {user: self.appKey, pass: self.masterSecret},
