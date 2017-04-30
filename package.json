@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "standard": "*",
-    "tap-spec": "^3.0.0",
+    "tap-spec": "^4.1.1",
     "tape": "^4.0.0"
   },
   "homepage": "https://github.com/bcomnes/urbanairship",
